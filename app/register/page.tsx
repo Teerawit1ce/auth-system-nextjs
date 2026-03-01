@@ -10,6 +10,7 @@ function ResisterPage() {
     const [password, setpassword] = useState("");
     const [confirmPassword, setconfirmPassword] = useState("");
     const [error, seterror] = useState("");
+    const [success, setSuccess] = useState("");
 
     const handleSubmit = async (e: React.SyntheticEvent) => {
         e.preventDefault();
@@ -39,6 +40,7 @@ function ResisterPage() {
             if (res.ok) {
               const form = e.target as HTMLFormElement;
               seterror("");
+              setSuccess("User registration successfully")
               form.reset();
             } else {
               console.log("User registeration failed.")
@@ -60,6 +62,12 @@ function ResisterPage() {
             {error && (
               <div className='bg-red-500 w-fit text-sm text-white py-1 px-3 rounded-md mt-2'>
                 {error}
+              </div>
+            )}
+
+             {success && (
+              <div className='bg-green-500 w-fit text-sm text-white py-1 px-3 rounded-md mt-2'>
+                {success}
               </div>
             )}
 
